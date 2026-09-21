@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "author": "Luis Otavio Santini, Vitor Barbosa Paiva, Arthur Traldi Felix, Lucas Andrade de Souza",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-rgb-led", "id": "rgb1", "top": 20, "left": 220, "attrs": { "common": "cathode" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 130, "left": 160, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 130, "left": 190, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 130, "left": 220, "rotate": 90, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:25", "r1:2", "red", [] ],
+    [ "r1:1", "rgb1:R", "red", [] ],
+    [ "esp:26", "r2:2", "green", [] ],
+    [ "r2:1", "rgb1:G", "green", [] ],
+    [ "esp:27", "r3:2", "blue", [] ],
+    [ "r3:1", "rgb1:B", "blue", [] ],
+    [ "rgb1:COM", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
