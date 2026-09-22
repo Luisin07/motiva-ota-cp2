@@ -13,7 +13,7 @@ Nó IoT de monitoramento de altura da vegetação com **ESP32 simulado no Wokwi*
 
 ## Links
 
-- **Projeto Wokwi:** `COLE_AQUI_O_LINK_DO_WOKWI`
+- **Projeto Wokwi:** https://wokwi.com/projects/475817234852771841
 - **Repositório OTA:** `https://github.com/Luisin07/motiva-ota-cp2`
 - **Manifesto:** `https://raw.githubusercontent.com/Luisin07/motiva-ota-cp2/main/version.json`
 
@@ -25,6 +25,7 @@ motiva-ota-cp2/
 ├── firmware_v2.bin     # binário do FW 2.0 (baixado pelo ESP32 durante o OTA)
 ├── firmware_v1.ino     # código-fonte FW 1.0 (roda no Wokwi e faz o OTA)
 ├── firmware_v2.ino     # código-fonte FW 2.0 (compilado -> firmware_v2.bin)
+├── firmware_v1_wokwi.bin # FW 1.0 compilado (imagem completa) p/ upload no Wokwi
 ├── wokwi/
 │   ├── sketch.ino      # = firmware_v1.ino
 │   ├── diagram.json    # ESP32 DevKit C v4 + LED RGB (catodo comum) + 3 resistores 220 Ω
@@ -113,6 +114,14 @@ Também tratados: manifesto com JSON inválido, download incompleto (timeout) e 
 4. Após o reboot: banner **FW 2.0**, partição `app1`, "atualizado de 1.0 para 2.0" e LED verde/vermelho conforme a histerese.
 
 > Para rodar de novo a partir do FW 1.0, basta parar e dar Play outra vez no Wokwi: a simulação reinicia com a flash limpa.
+
+### Alternativa: fila de compilação do Wokwi cheia
+
+Se o Wokwi mostrar "Build Servers Busy", use o FW 1.0 já compilado deste repositório (`firmware_v1_wokwi.bin`, imagem completa: bootloader + tabela de partições com `app0`/`app1` + aplicação, gerada do mesmo `firmware_v1.ino`):
+
+1. No `diagram.json`, na placa: `"attrs": { "firmwareOffset": "0" }`.
+2. No editor, **F1 → Upload Firmware and Start Simulation...** e escolha `firmware_v1_wokwi.bin`.
+3. O boot deve mostrar `Particao em uso : app0`. Foi assim que a demonstração do relatório foi registrada.
 
 ### Como o firmware_v2.bin foi gerado
 
