@@ -9,7 +9,7 @@ Nó IoT de monitoramento de altura da vegetação com **ESP32 simulado no Wokwi*
 | Luis Otavio Santini | 563556 |
 | Vitor Barbosa Paiva | 565303 |
 | Arthur Traldi Felix | 563477 |
-| Lucas Andrade de Souza | 560466 |
+| Lucas Andrade de Souza | 564066 |
 
 ## Links
 
